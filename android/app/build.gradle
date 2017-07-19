@@ -103,6 +103,14 @@ android {
             abiFilters "armeabi-v7a", "x86"
         }
     }
+    signingConfigs {
+        release {
+            storeFile file('../keystores/formation-key.keystore')
+            storePassword ANDROID_STORE_PASSWORD // fichier ~/.gradle/gradle.properties
+            keyAlias 'formation'
+            keyPassword ANDROID_KEY_PASSWORD
+        }
+    }
     splits {
         abi {
             reset()
@@ -115,6 +123,7 @@ android {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
