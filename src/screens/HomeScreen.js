@@ -4,17 +4,21 @@ import {
   Button,
   StyleSheet,
   View,
+  Text,
 } from 'react-native';
 import {
   Sentry,
   SentrySeverity,
 } from 'react-native-sentry';
+import Config from 'react-native-config';
 
 import Info from '../components/Info';
 
 import { GREETINGS_SCENE_NAME } from '../screens/GreetingsScreen';
 import { JSX_SCENE_NAME } from '../screens/JsxScreen';
 import { STATE_SCENE_NAME } from '../screens/StateScreen';
+
+const URL = Config.API_URL;
 
 /** SENTRY **/
 Sentry.config('https://a5699b0724684e00ac8d0d4c5fb8a94c:bb2d90bb5efe44d48d5eaa80d65e89f3@sentry.io/192722').install();
@@ -124,6 +128,8 @@ export default class HomeScreen extends Component {
             title="Error Crash"
           />
         </View>
+
+        <Text>{URL}</Text>
       </ScrollView>
     );
   }
